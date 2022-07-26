@@ -1,0 +1,9 @@
+#!/bin/sh
+
+case $BLOCK_BUTTON in
+	1) fcitx-configtool ;; #LEFT CLICK
+	2) if pgrep fcitx; then pkill fcitx; else fcitx; fi;; # MIDDLE CLICK TO KILL OR START
+	3) notify-send "fcitx config: left click to bring up config, middle click to kill fcitx if running or start fcitx if not running ";; # RIGHT CLICK
+	6) "$TERMINAL" -e "$EDITOR" "$0" ;; # SHIFT CLICK
+
+esac; echo "字"
