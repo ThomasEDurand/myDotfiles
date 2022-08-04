@@ -1,9 +1,10 @@
 #!/bin/sh
 
 case $BLOCK_BUTTON in
-	1) fcitx-configtool ;; #LEFT CLICK
-	2) if pgrep fcitx; then pkill fcitx; else fcitx; fi;; # MIDDLE CLICK TO KILL OR START
-	3) notify-send "fcitx config: left click to bring up config, middle click to kill fcitx if running or start fcitx if not running ";; # RIGHT CLICK
-	6) "$TERMINAL" -e "$EDITOR" "$0" ;; # SHIFT CLICK
+        1) fcitx5-configtool ;; #LEFT CLICK
+        2) if pgrep fcitx5; then pkill fcitx5; else fcitx5; fi;; # MIDDLE CLICK TO KILL OR START
+        3) notify-send "fcitx5 config: left click to bring up config, middle click to kill or start fcitx5";; # RIGHT CLICK
+        6) "$TERMINAL" -e "$EDITOR" "$0" ;; # SHIFT CLICK TO OPEN IN EDITOR
 
 esac; echo "字"
+
