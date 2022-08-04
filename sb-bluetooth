@@ -1,0 +1,10 @@
+#!/bin/sh
+
+case $BLOCK_BUTTON in
+        1) blueberry ;; #LEFT CLICK
+        2) if pgrep blueberry; then pkill blueberry; else blueberry; fi;; # MIDDLE CLICK TO KILL OR START
+        3) notify-send "bluetooth config: left click to bring up config, middle click to kill
+or running ";; # RIGHT CLICK
+        6) "$TERMINAL" -e "$EDITOR" "$0" ;; # SHIFT CLICK
+
+esac; echo "ᚼᛒ"
