@@ -1,0 +1,22 @@
+#!/bin/sh
+
+lptDsp="eDP1"
+extDsp="HDMI1"
+
+# no command line args use grep
+
+#connected=$(xrandr | grep "HDMI1")
+#[[ "$connected" == *HDMI1[[:space:]]connected* ]] && echo "IT WORKS"
+
+case "$1" in
+        "") # No command line arg given, use grep
+        connected=$(xrandr | grep "HDMI1")
+        [[ "$connected" == *HDMI1[[:space:]]connected* ]] && xrandr --output "$extDsp" --off --output "$lptDsp" --auto
+        [[ "$connected" == *disconnected* ]] && xrandr --output "$extDsp" --set audio force-dvi --auto && xrandr --output "$lptDsp" --auto --output "$extDsp" --right-of "$lptDsp" ;;
+
+
+        "disc") xrandr --output "$extDsp" --off --output "$lptDsp" --auto ;;
+        "conn") xrandr --output "$extDsp" --set audio force-dvi --auto && xrandr --output "$lptDsp" --auto --output "$extDsp" --right-of "$lptDsp" ;;
+        # "dupe") xrandr --output "$extDsp" --set audio forve-dvi --auto && xrandr --output "$lptDsp" --mode "1920x1080" --output "$extDsp" --same-as "$lptDsp" ;;
+        *) notify-send "Invalid monitor operation";;
+esac
